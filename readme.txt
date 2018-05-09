@@ -9,5 +9,6 @@ Requirements:
 
 Player Class
 Card Class
-Game Class
+GameRunner Class
 Message Class
+GameLogic Class
