@@ -4,7 +4,7 @@ require '../app/card'
 class CardTest < Minitest::Test
 
 	def setup
-		@test_card = Card.new()
+		@test_card = Card.new(10)
 	end
 
 	def test_card_exists
@@ -13,7 +13,8 @@ class CardTest < Minitest::Test
 
 	def test_card_has_value
 		expected = 10
-		actual = @test_card.value
+		actual = @test_card.face_value
+		assert_equal(expected, actual)
 	end
 
 end
