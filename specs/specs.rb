@@ -13,7 +13,7 @@ class CardTest < Minitest::Test
 		@test_card2 = Card.new(10, :clubs, :king)
 		@test_deck = Deck.new()
 		@test_deck2 = Deck.new()
-		@test_player = Player.new()
+		@test_player = Player.new("Iggy")
 	end
 
 	# Card Class
@@ -65,6 +65,16 @@ class CardTest < Minitest::Test
 		assert_instance_of Player, @test_player
 	end
 
+	def test_player_has_name
+		expected = "Iggy"
+		actual = @test_player.player_name
+		assert_equal(expected, actual)
+	end
 
+	def test_player_has_hand
+		expected = []
+		actual = @test_player.player_hand
+		assert_equal(expected, actual)
+	end
 
 end
