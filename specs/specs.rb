@@ -1,6 +1,10 @@
 require 'minitest/autorun'
+require 'minitest/reporters'
 require '../app/card'
 require '../app/deck'
+require '../app/player'
+
+Minitest::Reporters.use!
 
 class CardTest < Minitest::Test
 
@@ -9,6 +13,7 @@ class CardTest < Minitest::Test
 		@test_card2 = Card.new(10, :clubs, :king)
 		@test_deck = Deck.new()
 		@test_deck2 = Deck.new()
+		@test_player = Player.new()
 	end
 
 	# Card Class
@@ -53,5 +58,13 @@ class CardTest < Minitest::Test
 		actual = @test_deck2.remaining_cards.first
 		assert_equal(expected, actual)
 	end
+
+	# Player Class
+
+	def test_player_exists
+		assert_instance_of Player, @test_player
+	end
+
+
 
 end
