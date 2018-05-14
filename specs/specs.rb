@@ -77,4 +77,11 @@ class CardTest < Minitest::Test
 		assert_equal(expected, actual)
 	end
 
+	def test_player_hand_can_contain_card
+		@test_player.player_hand.push(@test_card)
+		expected = @test_card
+		actual = @test_player.player_hand.first
+		assert_equal(expected, actual)
+	end
+
 end
