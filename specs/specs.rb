@@ -3,6 +3,7 @@ require 'minitest/reporters'
 require '../app/card'
 require '../app/deck'
 require '../app/player'
+require '../app/game_logic'
 
 Minitest::Reporters.use!
 
@@ -14,6 +15,7 @@ class CardTest < Minitest::Test
 		@test_deck = Deck.new()
 		@test_deck2 = Deck.new()
 		@test_player = Player.new("Iggy")
+		@game_logic = GameLogic.new()
 	end
 
 	# Card Class
@@ -82,6 +84,19 @@ class CardTest < Minitest::Test
 		expected = @test_card
 		actual = @test_player.player_hand.first
 		assert_equal(expected, actual)
+	end
+
+	def test_player_can_have_score
+		@test_player.score = 1
+		expected = 1
+		actual = @test_player.score
+		assert_equal(expected, actual)
+	end
+
+	# GameLogic Class
+
+	def test_game_logic_exists
+		assert_instance_of GameLogic, @game_logic
 	end
 
 end
