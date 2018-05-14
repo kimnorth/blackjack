@@ -8,6 +8,7 @@ class CardTest < Minitest::Test
 		@test_card = Card.new(10, :clubs)
 		@test_card2 = Card.new(10, :clubs, :king)
 		@test_deck = Deck.new()
+		@test_deck2 = Deck.new()
 	end
 
 	# Card Class
@@ -38,6 +39,19 @@ class CardTest < Minitest::Test
 
 	def test_deck_exists
 		assert_instance_of Deck, @test_deck
+	end
+
+	def test_deck_has_card_container
+		expected = []
+		actual = @test_deck.remaining_cards
+		assert_equal(expected, actual)
+	end
+
+	def test_deck_can_contain_cards
+		@test_deck2.remaining_cards.push(@test_card)
+		expected = @test_card
+		actual = @test_deck2.remaining_cards.first
+		assert_equal(expected, actual)
 	end
 
 end
