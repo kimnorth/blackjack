@@ -10,13 +10,18 @@ Minitest::Reporters.use!
 class CardTest < Minitest::Test
 
 	def setup
+		# Cards
 		@test_card = Card.new(10, :clubs)
 		@test_card2 = Card.new(10, :clubs, :king)
+		@king_spade_card = Card.new(10, :spade, :king)
 		@test_deck = Deck.new()
 		@test_deck2 = Deck.new()
 		@test_player = Player.new("Iggy")
-		@game_logic = GameLogic.new([])
-		@game_logic2 = GameLogic.new([Player.new("Ted"), Player.new("Steve")])
+		@game_logic = GameLogic.new([], Deck.new())
+		@game_logic2 = GameLogic.new(
+			[Player.new("Ted"), 
+			Player.new("Steve")],
+			Deck.new())
 	end
 
 	# Card Class
@@ -115,6 +120,11 @@ class CardTest < Minitest::Test
 		expected = 0
 		actual = @game_logic2.game_count
 		assert_equal(expected, actual)
+	end
+
+	def test_game_has_deck
+		actual = @game_logic2.deck
+		assert_instance_of Deck, actual
 	end
 
 end
