@@ -17,6 +17,7 @@ class CardTest < Minitest::Test
 		# Deck
 		@test_deck = Deck.new()
 		@test_deck2 = Deck.new()
+		@test_deck3 = Deck.new()
 		# Player
 		@test_player = Player.new("Iggy")
 		# Logic
@@ -73,8 +74,15 @@ class CardTest < Minitest::Test
 		assert_equal(expected, actual)
 	end
 
-	def test_can_draw_card_from_deck
-		puts @test_deck2.remaining_cards
+	# def test_can_draw_card_from_deck
+	# 	puts @test_deck2.remaining_cards
+	# end
+
+	def test_deck_setup_populates_remaining_cards
+		@test_deck3.setup_deck()
+		expected = 52
+		actual = @test_deck3.remaining_cards.length
+		assert_equal(expected, actual)
 	end
 
 	# Player Class
@@ -138,11 +146,16 @@ class CardTest < Minitest::Test
 	end
 
 	def test_game_can_add_card_to_player_hand
-		puts @game_logic2.players.first.player_hand
 		@game_logic2.add_card_to_player(@king_spade_card, @game_logic2.players.first)
 		expected = @king_spade_card
 		actual = @game_logic2.players.first.player_hand[0]
 		assert_equal(expected, actual)
 	end
+
+	# def test_game_can_deal_first_hand_to_players
+	# 	@game_logic3.deal_hand()
+	# 	actual = @game_logic.players.first.player_hand
+	# 	assert_instance_of Card, actual
+	# end
 
 end
