@@ -111,4 +111,10 @@ class CardTest < Minitest::Test
 		assert_instance_of Player, actual
 	end
 
+	def test_game_has_game_count
+		expected = 0
+		actual = @game_logic2.game_count
+		assert_equal(expected, actual)
+	end
+
 end
