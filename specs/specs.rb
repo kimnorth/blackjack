@@ -14,14 +14,20 @@ class CardTest < Minitest::Test
 		@test_card = Card.new(10, :clubs)
 		@test_card2 = Card.new(10, :clubs, :king)
 		@king_spade_card = Card.new(10, :spade, :king)
+		# Deck
 		@test_deck = Deck.new()
 		@test_deck2 = Deck.new()
+		# Player
 		@test_player = Player.new("Iggy")
+		# Logic
 		@game_logic = GameLogic.new([], Deck.new())
 		@game_logic2 = GameLogic.new(
-			[Player.new("Ted"), 
-			Player.new("Steve")],
-			Deck.new())
+			[
+				Player.new("Ted"), 
+				Player.new("Steve")
+			],
+			Deck.new()
+		)
 	end
 
 	# Card Class
@@ -65,6 +71,10 @@ class CardTest < Minitest::Test
 		expected = @test_card
 		actual = @test_deck2.remaining_cards.first
 		assert_equal(expected, actual)
+	end
+
+	def test_can_draw_card_from_deck
+		puts @test_deck2.remaining_cards
 	end
 
 	# Player Class
@@ -125,6 +135,14 @@ class CardTest < Minitest::Test
 	def test_game_has_deck
 		actual = @game_logic2.deck
 		assert_instance_of Deck, actual
+	end
+
+	def test_game_can_add_card_to_player_hand
+		puts @game_logic2.players.first.player_hand
+		@game_logic2.add_card_to_player(@king_spade_card, @game_logic2.players.first)
+		expected = @king_spade_card
+		actual = @game_logic2.players.first.player_hand[0]
+		assert_equal(expected, actual)
 	end
 
 end
