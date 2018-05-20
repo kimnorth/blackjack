@@ -7,9 +7,14 @@ Requirements:
 - Each game is printed out into the terminal
 - Message is displayed at the end of the game, prompted game to start again
 
-Player Class
-Card Class
+
 GameRunner Class
 Message Class
 GameLogic Class
+Module for card suits
+
+Done:
+
 Deck Class
+Card Class
+Player Class

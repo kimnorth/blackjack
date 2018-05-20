@@ -15,7 +15,7 @@ class CardTest < Minitest::Test
 		@test_deck = Deck.new()
 		@test_deck2 = Deck.new()
 		@test_player = Player.new("Iggy")
-		@game_logic = GameLogic.new()
+		@game_logic = GameLogic.new([])
 	end
 
 	# Card Class
@@ -97,6 +97,12 @@ class CardTest < Minitest::Test
 
 	def test_game_logic_exists
 		assert_instance_of GameLogic, @game_logic
+	end
+
+	def test_game_can_take_players
+		expected = []
+		actual = @game_logic.players
+		assert_equal(expected, actual)
 	end
 
 end
