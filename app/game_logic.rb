@@ -25,9 +25,19 @@ class GameLogic
 
 	def add_up_player_hand(player)
 		total_value = 0
+
 		player.player_hand.each do |card|
 			total_value += card.face_value
 		end
+		# convert first ace to one if hand is over 21
+		
+		player.player_hand.each do |card|
+			if(total_value > 21 && card.face_value == 11)
+				card.face_value = 1
+				total_value -= 10
+			end
+		end
+
 		return total_value
 	end
 

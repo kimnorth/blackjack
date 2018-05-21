@@ -213,4 +213,13 @@ class CardTest < Minitest::Test
 		assert_equal(expected, actual)
 	end
 
+	def test_game_can_switch_first_ace_to_lower_value_if_over_21
+		@game_logic3.add_card_to_player(@king_spade_card, @game_logic3.players.first)
+		@game_logic3.add_card_to_player(@queen_hearts_card, @game_logic3.players.first)
+		@game_logic3.add_card_to_player(@ace_clubs_card, @game_logic3.players.first)
+		expected = 21
+		actual = @game_logic3.add_up_player_hand(@game_logic3.players.first)
+		assert_equal(expected, actual)
+	end
+
 end
