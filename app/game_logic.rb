@@ -33,21 +33,30 @@ class GameLogic
 		# convert aces to one until hand is 21 or lower
 		
 		player.player_hand.each do |card|
-			puts 
-			puts card.face_character 
-			puts "current card value: #{card.face_value}"
-			puts "total value of hand #{total_value}"
+			# puts 
+			# puts card.face_character 
+			# puts "current card value: #{card.face_value}"
+			# puts "total value of hand #{total_value}"
 			if(total_value > 21 && card.face_value == 11)
 				card.face_value = 1
 				total_value -= 10
 			end
-			puts
-			puts "current card value: #{card.face_value}"
-			puts "total value of hand #{total_value}"
-			puts total_value
+			# puts
+			# puts "current card value: #{card.face_value}"
+			# puts "total value of hand #{total_value}"
+			# puts total_value
 		end
 
 		return total_value
+	end
+
+	def check_for_bust(player)
+		player_total = add_up_player_hand(player)
+		if(player_total > 21)
+			return true
+		else
+			return false
+		end
 	end
 
 end

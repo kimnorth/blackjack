@@ -233,4 +233,20 @@ class CardTest < Minitest::Test
 		assert_equal(expected, actual)
 	end
 
+	def test_game_can_determine_if_player_if_not_bust
+		@game_logic3.deal_hand()
+		expected = false
+		actual = @game_logic3.check_for_bust(@game_logic3.players.first)
+		assert_equal(expected, actual)
+	end
+
+	def test_game_can_determine_if_player_bust
+		@game_logic3.deal_hand()
+		@game_logic3.add_card_to_player(@king_spade_card, @game_logic3.players.first)
+		@game_logic3.add_card_to_player(@queen_hearts_card, @game_logic3.players.first)
+		expected = true
+		actual = @game_logic3.check_for_bust(@game_logic3.players.first)
+		assert_equal(expected, actual)
+	end
+
 end
