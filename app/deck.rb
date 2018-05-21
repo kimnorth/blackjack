@@ -43,6 +43,9 @@ class Deck
 	end
 
 	def draw_card
+		if remaining_cards.length == 0
+			setup_deck()
+		end
 		remaining_cards_array_length = @remaining_cards.length
 		number = rand(1...remaining_cards_array_length)
 		drawn_card = @remaining_cards[number]
