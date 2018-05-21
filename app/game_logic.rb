@@ -16,4 +16,13 @@ class GameLogic
 		end
 	end
 
+	def deal_hand
+		# Get how many players are in the game
+
+		@players.each do |player|
+			player.player_hand.push(@deck.draw_card()) * 2
+		end
+		
+	end
+
 end

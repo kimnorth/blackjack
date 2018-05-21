@@ -29,6 +29,13 @@ class CardTest < Minitest::Test
 			],
 			Deck.new()
 		)
+		@game_logic3 = GameLogic.new(
+			[	
+				Player.new("Alan"),
+				Player.new("Chris")
+			],
+			Deck.new()
+		)
 	end
 
 	# Card Class
@@ -169,10 +176,10 @@ class CardTest < Minitest::Test
 		assert_equal(expected, actual)
 	end
 
-	# def test_game_can_deal_first_hand_to_players
-	# 	@game_logic3.deal_hand()
-	# 	actual = @game_logic.players.first.player_hand
-	# 	assert_instance_of Card, actual
-	# end
+	def test_game_can_deal_first_hand_to_players
+		@game_logic3.deal_hand()
+		actual = @game_logic3.players.first.player_hand[0]
+		assert_instance_of Card, actual
+	end
 
 end
