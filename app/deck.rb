@@ -8,21 +8,24 @@ class Deck
 
 	def setup_deck
 		# Create 4 x cards for each suits
-		i = 1
-		current_face = :ace
-
-		if(i > 1)
-			current_face = nil
-		end
+		
+		@remaining_cards.push(
+			Card.new(11, :spades, :ace),
+			Card.new(11, :diamonds, :ace),
+			Card.new(11, :clubs, :ace),
+			Card.new(11, :hearts, :ace),
+		)
 		
 		# Creates the first 40
 
+		i = 2
+
 		while i < 11
 			@remaining_cards.push(
-				Card.new(i, :spades, current_face),
-				Card.new(i, :diamonds, current_face),
-				Card.new(i, :clubs, current_face),
-				Card.new(i, :hearts, current_face),
+				Card.new(i, :spades),
+				Card.new(i, :diamonds),
+				Card.new(i, :clubs),
+				Card.new(i, :hearts),
 			)
 			i += 1
 		end

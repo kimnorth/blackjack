@@ -29,13 +29,22 @@ class GameLogic
 		player.player_hand.each do |card|
 			total_value += card.face_value
 		end
-		# convert first ace to one if hand is over 21
+
+		# convert aces to one until hand is 21 or lower
 		
 		player.player_hand.each do |card|
+			puts 
+			puts card.face_character 
+			puts "current card value: #{card.face_value}"
+			puts "total value of hand #{total_value}"
 			if(total_value > 21 && card.face_value == 11)
 				card.face_value = 1
 				total_value -= 10
 			end
+			puts
+			puts "current card value: #{card.face_value}"
+			puts "total value of hand #{total_value}"
+			puts total_value
 		end
 
 		return total_value

@@ -19,6 +19,8 @@ class CardTest < Minitest::Test
 		@queen_hearts_card = Card.new(10, :hearts, :queen)
 		@jack_diamonds_card = Card.new(10, :diamonds, :jack)
 		@ace_clubs_card = Card.new(11, :clubs, :ace)
+		@ace_spades_card = Card.new(11, :spades, :ace)
+		@ace_diamonds_card = Card.new(11, :diamonds, :ace)
 		# Deck
 		@test_deck = Deck.new()
 		@test_deck2 = Deck.new()
@@ -218,6 +220,15 @@ class CardTest < Minitest::Test
 		@game_logic3.add_card_to_player(@queen_hearts_card, @game_logic3.players.first)
 		@game_logic3.add_card_to_player(@ace_clubs_card, @game_logic3.players.first)
 		expected = 21
+		actual = @game_logic3.add_up_player_hand(@game_logic3.players.first)
+		assert_equal(expected, actual)
+	end
+
+	def test_game_can_switch_to_lower_ace_with_multiple_aces
+		@game_logic3.add_card_to_player(@ace_clubs_card, @game_logic3.players.first)
+		@game_logic3.add_card_to_player(@ace_spades_card, @game_logic3.players.first)
+		@game_logic3.add_card_to_player(@ace_diamonds_card, @game_logic3.players.first)
+		expected = 13
 		actual = @game_logic3.add_up_player_hand(@game_logic3.players.first)
 		assert_equal(expected, actual)
 	end
