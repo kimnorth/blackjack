@@ -74,15 +74,17 @@ class CardTest < Minitest::Test
 		assert_equal(expected, actual)
 	end
 
-	# def test_can_draw_card_from_deck
-	# 	puts @test_deck2.remaining_cards
-	# end
-
 	def test_deck_setup_populates_remaining_cards
 		@test_deck3.setup_deck()
 		expected = 52
 		actual = @test_deck3.remaining_cards.length
 		assert_equal(expected, actual)
+	end
+
+	def test_can_draw_random_card_from_deck
+		@test_deck3.setup_deck()
+		actual = @test_deck3.draw_card()
+		assert_instance_of Card, actual
 	end
 
 	# Player Class

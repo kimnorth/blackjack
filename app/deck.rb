@@ -9,7 +9,6 @@ class Deck
 	def setup_deck
 		# Create 4 x cards for each suits
 		i = 1
-
 		current_face = :ace
 
 		if(i > 1)
@@ -41,6 +40,14 @@ class Deck
 			)
 		end
 
+	end
+
+	def draw_card
+		remaining_cards_array_length = @remaining_cards.length
+		number = rand(1...remaining_cards_array_length)
+		drawn_card = @remaining_cards[number]
+		@remaining_cards.delete_at(number)
+		return drawn_card
 	end
 
 end
