@@ -87,6 +87,14 @@ class CardTest < Minitest::Test
 		assert_instance_of Card, actual
 	end
 
+	def test_drawing_card_reduces_size_of_remaining_cards
+		@test_deck3.setup_deck()
+		@test_deck3.draw_card()
+		expected = 51
+		actual = @test_deck3.remaining_cards.length
+		assert_equal(expected, actual)
+	end
+
 	# Player Class
 
 	def test_player_exists
