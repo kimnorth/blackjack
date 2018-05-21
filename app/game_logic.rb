@@ -17,12 +17,18 @@ class GameLogic
 	end
 
 	def deal_hand
-		# Get how many players are in the game
-
 		@players.each do |player|
-			player.player_hand.push(@deck.draw_card()) * 2
+			player.player_hand.push(@deck.draw_card())
+			player.player_hand.push(@deck.draw_card())
 		end
-		
+	end
+
+	def add_up_player_hand(player)
+		total_value = 0
+		player.player_hand.each do |card|
+			total_value += card.face_value
+		end
+		return total_value
 	end
 
 end

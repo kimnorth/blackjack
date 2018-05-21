@@ -13,7 +13,12 @@ class CardTest < Minitest::Test
 		# Cards
 		@test_card = Card.new(10, :clubs)
 		@test_card2 = Card.new(10, :clubs, :king)
+		@six_of_diamonds = Card.new(6, :diamonds)
+		@six_of_hearts = Card.new(6, :hearts)
 		@king_spade_card = Card.new(10, :spade, :king)
+		@queen_hearts_card = Card.new(10, :hearts, :queen)
+		@jack_diamonds_card = Card.new(10, :diamonds, :jack)
+		@ace_clubs_card = Card.new(11, :clubs, :ace)
 		# Deck
 		@test_deck = Deck.new()
 		@test_deck2 = Deck.new()
@@ -180,6 +185,32 @@ class CardTest < Minitest::Test
 		@game_logic3.deal_hand()
 		actual = @game_logic3.players.first.player_hand[0]
 		assert_instance_of Card, actual
+	end
+
+	def test_game_deals_two_cards_to_each_player
+		@game_logic3.deal_hand()
+		expected = 4
+		actual = 0
+		@game_logic3.players.each do |player|
+			actual += player.player_hand.length
+		end
+		assert_equal(expected, actual)
+	end
+
+	def test_game_can_add_up_value_of_hand_with_number_cards
+		@game_logic3.add_card_to_player(@six_of_diamonds, @game_logic3.players.first)
+		@game_logic3.add_card_to_player(@six_of_hearts, @game_logic3.players.first)
+		expected = 12
+		actual = @game_logic3.add_up_player_hand(@game_logic3.players.first)
+		assert_equal(expected, actual)
+	end
+
+	def test_game_can_add_up_value_of_hand_with_face_cards
+		@game_logic3.add_card_to_player(@king_spade_card, @game_logic3.players.first)
+		@game_logic3.add_card_to_player(@queen_hearts_card, @game_logic3.players.first)
+		expected = 20
+		actual = @game_logic3.add_up_player_hand(@game_logic3.players.first)
+		assert_equal(expected, actual)
 	end
 
 end
